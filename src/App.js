@@ -5,10 +5,11 @@ import Sandbox from './sandbox';
 import sourceFiles from './sourceCode';
 
 function App() {
-  const [activeFile, setActiveFile] = useState('/src/App.js')
+  const [activeFile, setActiveFile] = useState('/src/App.ts');
   const [files, setFiles] = useState(sourceFiles);
 
   return (
+    <>
     <div className="app">
       <div>
         <div className='filetree'>
@@ -38,12 +39,15 @@ function App() {
           }}
         />
       </div>
-      <div className='preview'>
+     
+    </div>
+    <div className='preview'>
         <Sandbox
-          bundlerURL="https://mcuking.github.io/vitesandbox-client/"
+          bundlerURL="http://localhost:8888/vite.html"
+          // bundlerURL="http://localhost:3000/vite.html"
           files={files} />
       </div>
-    </div>
+    </>
   );
 }
 

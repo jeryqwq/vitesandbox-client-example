@@ -3,7 +3,8 @@ const packageJson =  {
   private: true,
   dependencies: {
     react: '17.0.2',
-    'react-dom': '17.0.2'
+    'react-dom': '17.0.2',
+    "dayjs": "^1.11.7",
   },
 };
 
@@ -18,16 +19,15 @@ const htmlCode = `
   </head>
   <body>
     <div id="root" />
-    <script type="module" src="/src/index.js"></script>
+    <script type="module" src="/src/index.ts"></script>
   </body>
 </html>`.trim();
 
 const entryCode = `
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import App from './App.ts';
 
-import './index.less';
 
 ReactDOM.render(
   <App />,
@@ -38,15 +38,28 @@ ReactDOM.render(
 const lessCode = `
 body {
   background: #eee;
+  border: solid 1px black;
+}
+.test{
+  border: solid 2px red;
 }
 `.trim();
 
 const appCode = `
 import React from 'react';
-
-function App() {
+import dayjs from 'dayjs';
+import Comp from './Comp';
+import styles from './index.module.less';
+type Props = {
+  a: number,
+  b: string
+}
+function App({a: number, b: string}:Props ) {
   return (
-    <div>Hello World, ViteSandbox!</div>
+    <div className={styles.test}>Hello World, ViteSandbox!
+    {dayjs(new Date()).toString()}
+    <Comp />
+    </div>
   );
 }
 
@@ -56,9 +69,16 @@ export default App;
 const files = {
   '/package.json': JSON.stringify(packageJson),
   '/index.html': htmlCode,
-  '/src/index.js': entryCode,
-  '/src/index.less': lessCode,
-  '/src/App.js': appCode,
+  '/src/index.ts': entryCode,
+  '/src/Comp.js': `
+  import React from 'react';
+  import ReactDOM from 'react-dom';
+  export default function () {
+    return <div>Index2</div>
+  }
+  `,
+  '/src/index.module.less': lessCode,
+  '/src/App.ts': appCode,
 };
 
 export default files;

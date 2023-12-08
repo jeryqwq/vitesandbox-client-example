@@ -31,7 +31,10 @@ const ViteSandbox = ({
   }, [files, sendProjectInfo]);
 
   return (
-    <iframe
+    <div>
+      viteServer: <input value={bundlerURL}/>
+      {/* url: <input value={bundlerURL}/> */}
+      <iframe
         ref={iframeEl}
         title="sandbox-container"
         id="sandbox-container"
@@ -44,6 +47,7 @@ const ViteSandbox = ({
         src={bundlerURL}
         onLoad={sandboxOnLoad}
       />
+    </div>
   );
 };
 

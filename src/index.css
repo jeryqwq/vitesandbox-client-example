@@ -9,7 +9,6 @@ html {
 }
 
 body {
-  max-width: 690px;
   margin: auto;
 }
 
@@ -85,13 +84,12 @@ code {
   width: 100%;
 }
 
-.app {
-  margin-top: 60px;
-}
 
 .preview {
   position: relative;
   border-top: 1px solid rgb(229, 231, 235);
+  height: 800px;
+  width: 100vw;
 }
 
 .filetree {
