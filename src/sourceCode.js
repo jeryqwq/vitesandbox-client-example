@@ -19,14 +19,14 @@ const htmlCode = `
   </head>
   <body>
     <div id="root" />
-    <script type="module" src="/src/index.ts"></script>
+    <script type="module" src="/src/index.tsx"></script>
   </body>
 </html>`.trim();
 
 const entryCode = `
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App.ts';
+import App from './App.tsx';
 
 
 ReactDOM.render(
@@ -50,11 +50,9 @@ import React from 'react';
 import dayjs from 'dayjs';
 import Comp from './Comp';
 import styles from './index.module.less';
-type Props = {
-  a: number,
-  b: string
-}
-function App({a: number, b: string}:Props ) {
+import test from './test.ts';
+console.log(test)
+function App({a}: {a: number} ) {
   return (
     <div className={styles.test}>Hello World, ViteSandbox!
     {dayjs(new Date()).toString()}
@@ -69,7 +67,7 @@ export default App;
 const files = {
   '/package.json': JSON.stringify(packageJson),
   '/index.html': htmlCode,
-  '/src/index.ts': entryCode,
+  '/src/index.tsx': entryCode,
   '/src/Comp.js': `
   import React from 'react';
   import ReactDOM from 'react-dom';
@@ -78,7 +76,11 @@ const files = {
   }
   `,
   '/src/index.module.less': lessCode,
-  '/src/App.ts': appCode,
+  '/src/test.ts': `
+    export default {a: 1} as any
+  `,
+  '/src/App.tsx': appCode,
+
 };
 
 export default files;

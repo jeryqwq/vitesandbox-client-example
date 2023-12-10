@@ -5,7 +5,7 @@ import Sandbox from './sandbox';
 import sourceFiles from './sourceCode';
 
 function App() {
-  const [activeFile, setActiveFile] = useState('/src/App.ts');
+  const [activeFile, setActiveFile] = useState('/src/App.tsx');
   const [files, setFiles] = useState(sourceFiles);
 
   return (
