@@ -43,8 +43,8 @@ function App() {
     </div>
     <div className='preview'>
         <Sandbox
-          bundlerURL="http://localhost:8888/vite.html"
-          // bundlerURL="http://localhost:3000/vite.html"
+          // bundlerURL="http://localhost:8888/vite.html"
+          bundlerURL="http://localhost:3006/vite.html"
           files={files} />
       </div>
     </>

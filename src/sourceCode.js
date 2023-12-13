@@ -5,6 +5,8 @@ const packageJson =  {
     react: '17.0.2',
     'react-dom': '17.0.2',
     "dayjs": "^1.11.7",
+    '@pupu/http': '4.7.0',
+    '@pupu/brick': '1.30.2'
   },
 };
 
@@ -51,8 +53,11 @@ import dayjs from 'dayjs';
 import Comp from './Comp';
 import styles from './index.module.less';
 import test from './test.ts';
-console.log(test)
-function App({a}: {a: number} ) {
+import type { ImportMap } from "./typescript-esm-plugin.ts";
+
+ import http2 from '@pupu/http';
+ console.log(http2)
+function App({a}: ImportMap) {
   return (
     <div className={styles.test}>Hello World, ViteSandbox!
     {dayjs(new Date()).toString()}
@@ -80,6 +85,7 @@ const files = {
     export default {a: 1} as any
   `,
   '/src/App.tsx': appCode,
+  '/img.ico': `https://platformtest.pupuvip.com/owl-web-test/a15fc55bf6363825a0cd.ico`
 
 };
 
